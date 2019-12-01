@@ -1,0 +1,79 @@
+{include file='public/header' title="$title"/}
+
+<link rel="stylesheet" href="_CSS_PATH_/center.css">
+<style>
+    .list>li{
+        display: inline-block;
+    }
+</style>
+
+
+
+    <!-- 展示图开始 -->
+    <div class="container">
+        <div class="images">
+            <img src="_IMAGE_PATH_/表彰图.jpg" alt="" style="height: 312px;margin-bottom: 20px">
+        </div>
+    </div>
+    <!-- 标题-->
+    <div class="container title1">
+        <div class="b-box"style="margin-top: 50px;">
+            <!-- <div class="row"> -->
+            <div class="title">
+                <span class="line-left"></span>
+                <div class="word">
+                    <p class="main">
+
+                        {$title}
+                    </p>
+                    <p class="sub">
+                        {$ename}
+                    </p>
+                </div>
+                <span class="line-right"></span>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- 列表 -->
+    <div class="container list1">
+        <div class="L-box">
+            <ul class="list">
+                {volist name="catename" id="vo"}
+                <li class="items">
+                    <span> {$vo.cname}</span>
+                    <div class="content box-style" style="display: block">
+                        {volist name="goods" id="vo"}
+                        <div class="shop">
+                            <div class="shoplist">
+                                <div class="shoppic">
+                                    <div class="shoppicture" >
+
+                                        <a href="/tinkphp1/public/index/Category/item?cid={$vo.cid}" >
+                                            <img src="{$vo.thumb}" alt="" style="width: 200px;height: 150px;">
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <div class="shopword">
+                                    <a class="word1" href="/tinkphp1/public/index/Category/item?id={$vo.id}">
+<!--                                        简约 时尚欧式系列-->
+                                        {$vo.gname}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/volist}
+                           </div>
+                         </li>
+                {/volist}
+                    </ul>
+                    </div>
+                </div>
+
+<!-- 底部开始 -->
+{include file='public/footer'}
+<script src="_JS_PATH_/center.js"></script>
+

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查看数据</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <style>
+        input{
+            border: none;
+            outline: none;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+<ol class="breadcrumb">
+    <li>商品管理</li>
+
+    <li>商品展示</li>
+</ol>
+<table class="table table-striped <?php echo count($res)?'':'hidden' ?>">
+    <thead>
+    <th>预约服务</th>
+    <th>预约日期</th>
+    <th>您的姓名</th>
+    <th>您的性别</th>
+    <th>您的电话</th>
+    <th>补充说明</th>
+    <th>验证码</th>
+    <th>操作</th>
+    </thead>
+    <tbody>
+    <?php
+    foreach($res as $key=>$value){
+    ?>
+    <tr id="<?php echo $value['id'] ?>">
+        <td><input type="text" name="server" data-values="<?php echo $value['server']; ?>" value="<?php echo $value['server']; ?>"></td>
+        <td><input type="text" name="data" data-values="<?php echo $value['data']; ?>" value="<?php echo $value['data']; ?>"></td>
+        <td><input type="text" name="name" data-values="<?php echo $value['name']; ?>" value="<?php echo $value['name']; ?>"></td>
+        <td><input type="text" name="sex" data-values="<?php echo $value['sex']; ?>" value="<?php echo $value['sex']; ?>"></td>
+        <td><input type="number" name="phone" data-values="<?php echo $value['phone']; ?>" value="<?php echo $value['phone']; ?>"></td>
+        <td><input type="text" name="introduce" data-values="<?php echo $value['introduce']; ?>" value="<?php echo $value['introduce']; ?>"></td>
+        <td><input type="text" name="captcha" data-values="<?php echo $value['captcha']; ?>" value="<?php echo $value['captcha']; ?>"></td>
+
+<!--        <td>-->
+<!--            <a class="btn btn-success"  href="onlineupdate.php?$gid=<?php echo $value['id'];?>">更新</a>-->
+<!--        </td>-->
+        <td>
+            <button class="btn btn-danger">删除</button>
+        </td>
+    </tr>
+    <?php
+    }
+?>
+    </tbody>
+</table>
+<div class="<?php echo count($res)?'hidden':'' ?>">
+    暂无数据
+</div>
+
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    $('tbody').on('click','.btn-danger',function (e) {
+        e.preventDefault();
+        let id=$(this).closest('tr').attr('id');
+        // $res=$(this).serialize();
+        //传给后台一个id
+
+        $.ajax({
+            type: 'POST',
+            url:'onlinedelect.php',
+            dataType:'json',
+            data:{'id':id},  //前台发送数据   data:{id}
+            success:function (res) {
+                if(res.code === 200){
+                    $('#'+id).remove();   //删除对应的行
+                    // location.reload(console.log(res.msg));//本地重载
+                }else {
+                    alert(res.msg);
+                }
+            }
+
+        })
+    })
+</script>
+<script>
+    $('tbody').on('blur','input',function (e) {
+        e.preventDefault();
+        let id=$(this).closest('tr').attr('id');
+        let type=this.name;
+        let value=this.value;
+        $.ajax({
+            type: 'POST',
+            url:'onlineupdate.php',
+            dataType:'json',
+            data:{'id':id,
+                'key':type,
+                'value':value
+            },  //前台发送数据   data:{id}
+            success:function (res) {
+                if(res.code === 200){
+                    location.reload();
+                }else {
+                    alert(res.msg);
+                }
+            }
+
+        })
+    })
+
+</script>

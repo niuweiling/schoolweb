@@ -1,0 +1,26 @@
+<?php
+    $sql="select * from nav";
+    $res=$mysql->query($sql)->fetch_all(MYSQLI_ASSOC);
+?>
+<!-- 养护文字开始 -->
+<div class="yanghu-box">
+    <div class="line-left"></div>
+    <div class="yanghu-text-box">
+        <div class="yanghu-text">
+            <?php
+            foreach($res as $key=>$v){
+             ?>
+            <?php echo $v['nname']?>
+            <?php }?>
+        </div>
+        <div class="yanghu-english">
+            <?php
+            foreach($res as $key=>$v){
+            ?>
+            <?php echo $v['ename']?>
+            <?php }?>
+        </div>
+    </div>
+    <div class="line-right"></div>
+</div>
+<!-- 养护文字结束 -->

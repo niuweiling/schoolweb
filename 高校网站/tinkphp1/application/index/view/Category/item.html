@@ -1,0 +1,148 @@
+{include file='public/header' title="$title"/}
+
+<link rel="stylesheet" href="_CSS_PATH_/item.css">
+
+<div class="container">
+    <div class="images">
+
+    </div>
+</div>
+
+
+    <!-- banner -->
+    <div class="banner ">
+        <img src="_IMAGE_PATH_/2.jpg " alt=" " style="height: 312px;margin-top: 20px;width: 80%;margin-left: 10%;">
+    </div>
+    <!-- item -->
+    <div class="big-box ">
+        <div class="title ">
+            <span>{$gname}</span>
+        </div>
+        <div class="row ">
+            <div class="lunbo swiper-container " style="margin: 0 ">
+                <!-- 轮播图开始 -->
+                <!-- <div class=" " id="ban "> -->
+                <div class="swiper-wrapper ">
+                    {volist name='all' id='v'}
+
+                        <div class="swiper-slide ">
+
+                                <img src="{$v}" alt="失败 ">
+
+                        </div>
+                    {/volist}
+
+
+
+
+
+
+                </div>
+                <div class="swiper-pagination "></div>
+                <!-- </div> -->
+                <!-- 轮播图结束 -->
+            </div>
+
+            <div class="word ">
+                <div class="witem ">
+                    <div class="price ">
+                        <span>参与人数：{$mprice}</span>
+                    </div>
+                    <div class="price1 ">
+                        <span>团委工作者：</span>
+                        <span class="buy-price ">{$sale}</span>
+                    </div>
+                    <div class="line "></div>
+                    <div class="state ">
+                        <span>外系人数：{$stock}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="wenzi ">
+            <div class="jieshao "><span style="font-size: 22px ">详细介绍</span></div>
+            <div class="neirong1 ">
+                 <span style="font-size:16px; color:rgb(128, 128,128); ">
+                  {$detail}
+            </span>
+            </div>
+            <div style="position: relative ">&nbsp;</div>
+<!--            <div class="neirong2 ">-->
+<!--                <span style="font-size:16px; color:rgb(128, 128,128); " >-->
+<!--                {$detail}-->
+
+<!--                </span>-->
+
+<!--            </div>-->
+
+        </div>
+            </div>
+            <!--尾栏 -->
+<!-- 底部开始 -->
+<footer style="background-color: #8f000b;height: 175px;">
+    <div class="container">
+        <div class="row">
+            <div class="footer-   col-md-12">
+                <div style="width: 100%;height: 100px;background-color: #8f000b">
+                    <div style="width: 920px;height: 150px;text-align: center;line-height: 30px;color: #ccc;margin-left: -110px;"; >
+                        版权所有：共青团南京大学委员会<br>
+
+                        地址：江苏省南京市栖霞区仙林大道163号<br>
+
+                        电话：025-89680321 89680322
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<!-- 版权开始 -->
+<div class="footer-copy" style="background-color: #8f000b">
+    <ul class="footer-icon">
+        <li class="icon-item"><i class="iconfont icon-tubiao215"></i></li>
+        <li class="icon-item"><i class="iconfont icon-weixin"></i></li>
+        <li class="icon-item"><i class="iconfont icon-xinfeng"></i></li>
+        <li class="icon-item"><i class="iconfont icon-dianhua"></i></li>
+        <li class="icon-item"><i class="iconfont icon-666"></i></li>
+    </ul>
+    <div class="copy-text">版权所有 1980-2020 南大团委工作部 技术支持：南大计信</div>
+    <div class="zhiding" style="transition: all 1s linear">
+        <a href="#top">
+            <img src="_IMG_PATH_/上箭头.png" alt="">
+        </a>
+
+    </div>
+</div>
+<!-- 版权结束 -->
+<!-- 底部结束 -->
+
+
+</body>
+
+</html>
+
+<script src="_JS_PATH_/swiper.min.js"></script>
+<script src="_JS_PATH_/com.js"></script>
+
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: true, //可选选项，自动滑动
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    })
+</script>
+        <script src="_JS_PATH_/swiper.min.js "></script>
+
+        <script src="_JS_PATH_/jQuery.js "></script>
+        <script src="_JS_PATH_/animate.js "></script>

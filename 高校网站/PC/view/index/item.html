@@ -1,0 +1,100 @@
+
+
+<link rel="stylesheet" href="../static/css/item.css">
+<!--<body>-->
+    <!-- 导航栏 -->
+
+    <!-- banner -->
+    <div class="banner ">
+        <img src="../static/img/樱花7.jpg " alt=" " style="height: 320px;width: 80%;margin-left: 10%;margin-top: 30px;" >
+    </div>
+    <!-- item -->
+    <div class="big-box " style="padding-top: 0px;">
+        <div class="title " >
+            <span>秀禾 花漾绽放系列</span>
+        </div>
+        <div class="row ">
+            <div class="lunbo swiper-container " style="margin: 0 ">
+                <!-- 轮播图开始 -->
+                <!-- <div class=" " id="ban "> -->
+                <div class="swiper-wrapper ">
+                    <div class="swiper-slide ">
+                        <div class="item ">
+                            <img src="../static/img/樱花10.jpg " alt="失败 ">
+                        </div>
+                    </div>
+                    <div class="swiper-slide ">
+                        <div class="item ">
+                            <img src="../static/img/樱花1.jpg " alt="失败 ">
+                        </div>
+                    </div>
+                    <div class="swiper-slide ">
+                        <div class="item ">
+                            <img src="../static/img/樱花11.jpg " alt="失败 ">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="swiper-pagination "></div>
+                <!-- </div> -->
+                <!-- 轮播图结束 -->
+            </div>
+
+            <div class="word ">
+                <div class="witem ">
+                    <div class="price ">
+                        <span>市场价：￥266.00</span>
+                    </div>
+                    <div class="price1 ">
+                        <span>零售价：</span>
+                        <span class="buy-price ">￥148.00</span>
+                    </div>
+                    <div class="line "></div>
+                    <div class="state ">
+                        <span>库存状况：有货</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="wenzi ">
+            <div class="jieshao "><span style="font-size: 22px ">商品介绍</span></div>
+            <div class="neirong1 "><span style="font-size:16px; color:rgb(128, 128,128); ">　生命的价值在于生活的充实，在于高尚的精神追求。一只小虫被人为的养在杯中，可它却寻寻觅觅找一条逃生之路。它为何急于逃离舒适的环境呢？也许它渴望蓝天中的遨游，也许它渴望嗅一嗅沁虫心脾的花香，也许它渴望引虫遐想的明月……它知道：生命的意义不仅在于活着，更在于内心的充实、精神的追求。同样，人活着，不能满足于口腹之欲，不能满足于索取与享受，更应该有高尚的追求。如同三次援藏的孔繁森，如同拔去牙齿徒步南极的秦大河，如同甘受清贫毅然走进山区的教师：为了追求，他们可以舍去一切，甚至生命…… 有了这样的精神追求，你才能发现生活中的鲜花，才能发现生活的美好。</span>
+            </div>
+            <div style="position: relative ">&nbsp;</div>
+            <div class="neirong2 ">
+                <span style="font-size:16px; color:rgb(128, 128,128); " >&nbsp;&nbsp;&nbsp;&nbsp;“鲜花”是精神的，审美的；而“饲料”是物质的，可用的。当一个人心中只剩下名与利的时候，当每天只为房子、车子、票子这些物质的东西奔波劳碌的时候，你说在它眼中，生活还有什么快乐、美好可言？
+            </span>
+
+
+            </div>
+
+
+            </div>
+
+<script src="../static/js/swiper.min.js "></script>
+ <script src="../static/js/item.js "></script>
+<script src="../static/js/jQuery.js "></script>
+<script src="../static/js/animate.js "></script>
+
+<script src="../static/js/public.js "></script>
+
+ <?php
+require '../view/index/footer.html';
+?>
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: true, //可选选项，自动滑动
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    })
+</script>

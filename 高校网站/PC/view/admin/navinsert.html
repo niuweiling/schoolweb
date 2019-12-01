@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航添加</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+	      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<ol class="breadcrumb">
+	<li><a href="#">首页</a></li>
+	<li><a href="#">导航添加</a></li>
+
+</ol>
+<form>
+	<div class="form-group">
+		<label for="exampleInputEmail1">中文名称</label>
+		<input type="text"  name="nname" class="form-control" id="exampleInputEmail1" placeholder="中文名称">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword2">英文名称</label>
+		<input type="text" name="ename" class="form-control" id="exampleInputPassword2" placeholder="英文名称">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword3">排序</label>
+		<input type="number" name="nsort" class="form-control" id="exampleInputPassword3" placeholder="排序">
+	</div>
+<!--	<div class="form-group">-->
+<!--		<label for="exampleInputPassword5">缩略图</label>-->
+<!--		<textarea type="text" name="nthum" class="form-control" id="exampleInputPassword5" placeholder="缩略图"></textarea>-->
+<!--	</div>-->
+	<div class="form-group">
+		<label for="exampleInputPassword4">栏目模板</label>
+		<input type="text" name="ntpl" class="form-control" id="exampleInputPassword4" placeholder="栏目模板">
+	</div>
+
+	<button type="submit" class="btn btn-success">Submit</button>
+</form>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+	$('form').on('submit',function (e) {
+	    e.preventDefault();  //屏蔽默认样式
+		let qs=$(this).serialize();
+		$.ajax({
+			url:'navinsert.php',
+            type:'POST',
+			dataType:'json',
+			data:qs,
+			context:this,  //改变this指向
+			success:function (res) {
+				if (res.code===200){
+				    this.reset();
+				} else {
+
+				}
+            }
+		})
+    })
+
+
+
+
+</script>

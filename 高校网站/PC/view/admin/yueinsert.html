@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航添加</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+	      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="../static/css/zxpublic.css">
+</head>
+<body>
+<ol class="breadcrumb">
+	<li><a href="#">在线预约</a></li>
+	<li><a href="#">导航添加</a></li>
+
+</ol>
+
+
+
+
+
+
+<form>
+	<div class="form-group">
+		<label for="exampleInputEmail1">预约服务</label>
+		<input type="text"  name="server" class="form-control" id="exampleInputEmail1" placeholder="预约服务">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword2">预约日期</label>
+		<input type="datetime-local" name="data" class="form-control" id="exampleInputPassword2" placeholder="预约日期">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword3">您的姓名</label>
+		<input type="text" name="name" class="form-control" id="exampleInputPassword3" placeholder="姓名">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword7">您的性别</label>
+		<input type="text" name="sex" class="form-control" id="exampleInputPassword7" placeholder="姓别">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword4">您的电话</label>
+		<input type="number" name="phone" class="form-control" id="exampleInputPassword4" placeholder="电话">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword5">补充说明</label>
+		<textarea type="text" name="introduce" class="form-control" id="exampleInputPassword5" placeholder="补充说明"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword6">验证码</label>
+		<input type="text" name="captcha" class="form-control" id="exampleInputPassword6" placeholder="验证码">
+	</div>
+
+	<div class="submitbox">
+		<div class="submit">
+			<button type="submit" class="btn btn-success"  onclick="sublim()">提交预约</button>
+		</div>
+	</div>
+
+<!--	<button type="submit" class="btn btn-success">Submit</button>-->
+</form>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    $('form').on('submit',function (e) {
+        e.preventDefault();  //屏蔽默认样式
+        let qs=$(this).serialize();
+        $.ajax({
+            url:'yueinsert.php',
+            type:'POST',
+            dataType:'json',
+            data:qs,
+            context:this,  //改变this指向
+            success:function (res) {
+                if (res.code===200){
+                    this.reset();
+                } else {
+
+                }
+            }
+        })
+    })
+
+
+
+
+</script>

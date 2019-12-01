@@ -1,0 +1,362 @@
+    /* 清除所有的默认样式 */
+    
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+        font-family: "微软雅黑";
+    }
+    
+    a {
+        text-decoration: none!important;
+    }
+    
+    a:hover {
+        text-decoration: none!important;
+    }
+    /* 导航栏*/
+    
+    header {
+        width: 100%;
+        height: 90px;
+        background: #212A3F;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    header .logo img {
+        width: 173px;
+        height: 56px;
+    }
+    
+    header .navi {
+        width: 700px;
+        height: 90px;
+        line-height: 90px;
+    }
+    
+    header .navi-list {
+        margin: 0;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    header li {
+        float: left;
+    }
+    
+    header .navi-list a {
+        font-size: 14px;
+        color: gray;
+    }
+    
+    header .navi-list .text-1 {
+        margin-left: 100px;
+    }
+    
+    header .navi-list .text-t {
+        color: orangered;
+    }
+    
+    header .navi-list a:hover {
+        color: orangered;
+    }
+    
+    header .bottom {
+        display: none;
+    }
+    /* 滚动条滚动后的导航栏 */
+    
+    .middle {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        justify-content: space-around;
+        background: #212A3F;
+        align-items: center;
+    }
+    
+    .middle .logo img {
+        width: 173px;
+        height: 56px;
+    }
+    
+    .middle .right {
+        width: 700px;
+        height: 90px;
+        line-height: 90px;
+    }
+    
+    .middle ul {
+        margin: 0;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .middle li {
+        float: left;
+    }
+    
+    .middle .right a {
+        font-size: 14px;
+        color: gray;
+    }
+    
+    .middle .right .text-1 {
+        margin-left: 100px;
+    }
+    
+    .middle .right .text-t {
+        color: orangered;
+    }
+    
+    .middle .right a:hover {
+        color: orangered;
+    }
+    /* 尾栏 */
+    
+    .bar {
+        margin-top: 1000px;
+        width: 100%;
+        height: 355px;
+        background: #212A3F;
+    }
+    
+    .bar-b {
+        padding-top: 30px;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .bar .address {
+        color: gray;
+        font-size: 14px;
+    }
+    
+    .bar .address:first-child {
+        margin-left: 0;
+    }
+    
+    .bar strong {
+        font-size: 17px;
+        color: orangered;
+    }
+    
+    .bar .s {
+        color: #fff;
+    }
+    
+    .icon {
+        margin-top: 50px;
+        height: 36px;
+        text-align: center;
+    }
+    
+    .icon i {
+        font-size: 30px;
+        color: #fff;
+    }
+    
+    .icon span {
+        font-size: 12px;
+        color: #fff;
+    }
+    
+    .dropdown-box {
+        display: none;
+    }
+    
+    .zdJiantou {
+        position: fixed;
+        right: 30px;
+        bottom: 40px;
+        width: 34px;
+        height: 34px;
+    }
+    
+    .zdJiantou i {
+        color: white;
+    }
+    /* 超小屏 */
+    /* @media screen and (max-width:768px) { */
+    /* 头部 */
+    /* header .logo {
+        margin: 0 auto;
+    }
+    header .logo img {
+        width: 165.5px;
+        height: 50px;
+    }
+    header .right {
+        display: none;
+    }
+    .dbbottom {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 42px;
+        background: #f0443a;
+        text-align: center;
+        line-height: 42px;
+        color: #fff;
+        z-index: 999;
+    }
+    .dropdown-box {
+        display: block;
+        width: 100%;
+        height: 44px;
+        background: #f0443a;
+        color: #fff;
+        font-size: 14px;
+        line-height: 42px;
+    }
+    .dropdown-box .x {
+        margin-left: 20px;
+        display: block;
+        float: left;
+    }
+    .dropdown-box .x-1 {
+        margin-right: 20px;
+        display: block;
+        float: right;
+    }
+    .xialakuang {
+        margin: 0 auto;
+        width: 480px;
+        color: white;
+        background: #212A3F;
+    }
+    .xialakuang a li {
+        height: 44px;
+        text-align: left;
+        line-height: 44px;
+        opacity: 0;
+    }
+    .xialakuang a:hover li {
+        color: #fff;
+        background: #f0443a;
+        opacity: 1;
+    }
+    .middle {
+        display: none;
+    } */
+    /* 底部 */
+    /* .bar {
+        height: 150px;
+    }
+    .bar .bar-b {
+        display: none;
+    }
+    .icon {
+        height: 36px;
+        text-align: center;
+        padding-top: 50px;
+    }
+    .icon span {
+        display: none;
+    }
+} */
+    /*小于992px的屏幕*/
+    
+    @media screen and (max-width: 992px) {
+        /*导航栏*/
+        header .logo {
+            margin: 0 auto;
+        }
+        header .logo img {
+            width: 165.5px;
+            height: 50px;
+        }
+        header .navi {
+            display: none;
+        }
+        .dbbottom {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 42px;
+            background: #f0443a;
+            color: #fff;
+            text-align: center;
+            line-height: 42px;
+            z-index: 999;
+        }
+        /*小于992的导航栏下拉列表*/
+        .dropdown-box {
+            display: block;
+            width: 100%;
+            height: 44px;
+            background: #f0443a;
+            color: #fff;
+            font-size: 14px;
+            line-height: 42px;
+        }
+        .dropdown-box .x {
+            margin-left: 20px;
+            display: block;
+            float: left;
+        }
+        .dropdown-box .x-1 {
+            margin-right: 20px;
+            display: block;
+            float: right;
+        }
+        .xialakuang {
+            position: absolute;
+            top: 133px;
+            left: 0;
+            width: 100%;
+            color: white;
+            text-align: left;
+            background: #212A3F;
+        }
+        .xialakuang a li {
+            padding-left: 20px;
+            box-sizing: border-box;
+            height: 44px;
+            line-height: 44px;
+            opacity: 0;
+        }
+        .xialakuang a:hover li {
+            color: #fff;
+            background: #f0443a;
+            opacity: 1;
+        }
+        .middle {
+            display: none;
+        }
+        /*尾栏*/
+        .bar {
+            height: 150px;
+        }
+        .bar .bar-b {
+            display: none;
+        }
+        .icon {
+            padding-top: 50px;
+            height: 36px;
+            text-align: center;
+        }
+        .icon span {
+            display: none;
+        }
+    }
+    /* 大于992px的屏幕*/
+    
+    @media screen and (min-width:992px) {
+        .xialakuang {
+            display: none;
+        }
+        .dbbottom {
+            display: none;
+        }
+    }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>添加商品</title>
+	<link rel="stylesheet" href="/tinkphp1/public/static/css/layui.css" media="all">
+	<script src="/tinkphp1/public/static/layui.js" charset="utf-8"></script>
+</head>
+<body>
+<form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+
+
+
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">所属分类</label>
+		<div class="layui-input-block">
+			<select name="cid" lay-verify="require">
+				<option value=""></option>
+				{volist name="cates" id="vo"}
+				<option value="{$vo.id}">{$vo.cname}<br/></option>
+				 {/volist}
+			</select>
+		</div>
+
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">商品名称</label>
+		<div class="layui-input-block">
+			<input type="text" lay-verify="gname|require" name="gname" placeholder="请输入3-10个字符" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">市场价</label>
+		<div class="layui-input-block">
+			<input type="number" lay-verify="number" name="mprice" placeholder="请输入商品市场价" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">零售价</label>
+		<div class="layui-input-block">
+			<input type="number" lay-verify="number" name="sale" placeholder="请输入商品零售价" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">库存</label>
+		<div class="layui-input-block">
+			<input type="number" lay-verify="number" name="stock" placeholder="请输入库存量" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">缩略图:<span></span></label>
+		<div class="layui-input-block">
+			<div class="layui-upload">
+				<button type="button" class="layui-btn" id="test2">缩略图上传</button>
+				<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+					预览图：
+					<div class="layui-upload-list" id="demo2">
+						<img src="" alt="" width="200" id="thumb">
+					</div>
+					<input type="hidden" name="thumb">
+				</blockquote>
+			</div>
+		</div>
+	</div>
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">轮播图</label>
+		<div class="layui-input-block">
+
+			<div class="layui-upload">
+				<button type="button" class="layui-btn" id="test3">轮播图上传</button>
+				<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+					预览图：
+					<div class="layui-upload-list" id="banner">
+
+					</div>
+					<input type="hidden" name="banner">
+				</blockquote>
+			</div>
+
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">详情</label>
+		<div class="layui-input-block">
+			<textarea id="layedit" style="display: none;" name="detail"></textarea>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-input-block">
+			<button class="layui-btn" lay-submit lay-filter="go">立即提交</button>
+			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		</div>
+	</div>
+	<!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+
+</form>
+
+<script>
+
+    const HSOTNAME='/tinkphp1/public/index.php';//定义路径常量
+    layui.use(['element','layer','form','upload','layedit'], function() {
+          //解构赋值
+           let {$,layer,form,upload,element,layedit}=layui;
+           layedit.set({
+               uploadImage: {
+                   url: HSOTNAME+`/admin/upload/index`//接口url
+                   ,type: '' //默认post
+               }
+           });
+            let richedit=layedit.build('layedit'); //建立编辑器
+
+	    //表单验证
+        form.verify({
+            gname:[
+                /^[\u4e00-\u9fa5]{1,30}$/,
+                '请输入中文'
+            ]
+            // ,ename:[
+            //     /^[a-zA-Z][a-zA-Z\s]{1,49}$/,
+            //     '请输入英文'
+            // ]
+			//
+            // ,nsort: [
+            //     /\d{1,6}$/
+            //     ,'密码必须1到6位，且不能出现空格'
+            // ]
+            // ,ntpl: [
+            //     /^[\u4e00-\u9fa5]{1,30}$/,
+            //     '不能出现非中文'
+            // ]
+        })
+
+
+
+         //单图上传
+        var uploadInst = upload.render({
+            elem: '#test2',
+            url: HSOTNAME+`/admin/upload/index`,
+	        accept:'images',
+	        acceptMime:'image/*',//文件选择类型
+	        size:200,
+            before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo2').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //上传成功
+                if(res.code == 0){
+                    $('#thumb').attr('src', res.data.src);
+                    $('input[name=thumb]').val(res.data.src);
+                }else {
+                    return layer.msg('上传失败');
+                }
+            },
+            error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+
+
+        //多图片上传
+        upload.render({
+            elem: '#test3',
+            url: HSOTNAME+`/admin/upload/index`,
+	        accept:'images',
+	        acceptMime:'image/*',//文件选择类型
+            multiple: true,
+	        number:3,
+           // before: function(obj){
+           //      //预读本地文件示例，不支持ie8
+           //      obj.preview(function(index, file, result){
+           //          $('#demo3').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+           //      });
+           //  },
+            done: function(res){
+		        if (res.code==0){
+
+                    $("<img>").attr('src',res.data.src).css('width',200).appendTo('#banner');
+                    $('input[name=banner]').val((index,value) => value + res.data.src + ',');
+
+		        }
+            }
+        });
+
+
+        //表单提交
+        form.on('submit(go)',function (data) {
+            // let qs=data.field;
+            let{field,form}=data;
+            delete field.file;
+            field.banner=field.banner.slice(0,-1);
+            field.detail=layedit.getContent(richedit);
+            $.ajax({
+                url:'/tinkphp1/public/admin/goods/insert',
+                type:'POST',
+                data:field,
+                dataType:'json',
+                success:function (res) {
+                    if (res.code == 200){
+                        form.reset();
+                        $('input[type=hidden]').val('');
+                        $('#thumb').attr('src','');
+                        $('#banner>img').remove();
+                        $('#layedit')
+                        layer.confirm('添加成功')
+                    } else {
+                        layer.confirm("添加失败");
+                    }
+                }
+            })
+
+            return false;
+
+        })
+
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+* {
+    margin: 0
+}
+
+ul,
+li {
+    margin: 0;
+    list-style: none;
+    text-decoration: none!important;
+}
+
+a {
+    list-style: none;
+    text-decoration: none!important;
+    color: #333333;
+}
+
+
+/* 头部图片 */
+
+.pic-box>img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.pic-box {
+    max-width: 1024px;
+    max-height: 320px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+
+/* 养护文字 开始*/
+
+.yanghu-box {
+    position: relative;
+    max-width: 1024px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.line-left {
+    position: absolute;
+    left: 0;
+    top: 67px;
+    width: 41%;
+    height: 1px;
+    background-color: #d6d6d6;
+    overflow: hidden;
+}
+
+.line-right {
+    position: absolute;
+    right: 0;
+    top: 67px;
+    width: 41%;
+    height: 1px;
+    background-color: #d6d6d6;
+    overflow: hidden;
+}
+
+@media screen and (max-width:768px) {
+    .yanghu-text {
+        font-size: 20px !important;
+    }
+    .yanghu-english {
+        font-size: 20px !important;
+    }
+}
+
+.yanghu-text-box {
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+.yanghu-text {
+    font-size: 32px;
+    color: #333333;
+    text-align: center;
+}
+
+.yanghu-english {
+    font-size: 14px;
+    text-align: center;
+    color: #a5a5a5;
+    padding: 2px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+/* 养护文字结束 */
+
+
+/* 文章标题开始 */
+
+.content {
+    width: 984px;
+    height: 225px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 0 10px;
+}
+
+@media only screen and (max-width: 992px) {
+    .content {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 20px;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.post-title {
+    height: 13.64px;
+    font-weight: normal;
+    vertical-align: top;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    color: #333333;
+    font-size: 13px;
+    line-height: 13px;
+    border-bottom: 1px dotted #c6c6c6;
+}
+
+.post-title :hover {
+    color: red;
+}
+
+.time {
+    color: #d6d6d6;
+    line-height: 13px;
+    font-size: 12px;
+    float: right;
+    margin-right: 10px;
+}
+
+.post-last-title {
+    height: 13.64px;
+    font-weight: normal;
+    vertical-align: top;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    color: #333333;
+    font-size: 13px;
+    line-height: 13px;
+}
+
+.post-last-title :hover {
+    color: red;
+}
+
+
+/* 文章标题结束 */
+
+
+/* 底部图片开始 */
+
+.lastpic-box>img {
+    max-width: 1024px;
+    width: 100%;
+    height: auto;
+}
+
+.lastpic-box {
+    max-width: 1024px;
+    max-height: 320px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+
+/* 底部图片结束 */

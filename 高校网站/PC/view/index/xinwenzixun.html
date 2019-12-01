@@ -1,0 +1,93 @@
+<?php
+$sql="select * from news";
+$res=$mysql->query($sql)->fetch_all(MYSQLI_ASSOC);
+$sql="select * from nav where id='$id'";
+$nav=$mysql->query($sql)->fetch_assoc();
+
+?>
+    <link rel="stylesheet" href="../static/css/xinwenzixun.css">
+    <link rel="stylesheet " href="../static/css/xwpublic.css ">
+    <link rel="stylesheet " href="http://at.alicdn.com/t/font_1342887_wewr9nkb7qi.css ">
+    <!-- 头部图片开始 -->
+    <div class="pic-box">
+        <img src="../static/img/樱花5.jpg" alt=" " style="height: 320px;width: 100%;">
+    </div>
+    <!-- 头部图片结束 -->
+
+    <!-- 养护文字开始 -->
+    <div class="yanghu-box">
+        <div class="line-left"></div>
+        <div class="yanghu-text-box">
+            <div class="yanghu-text">
+<!--                婚纱知识-->
+	            <?php echo $nav['nname'];?>
+            </div>
+            <div class="yanghu-english">
+<!--                Wedding Dress-->
+	            <?php echo $nav['ename'];?>
+            </div>
+        </div>
+        <div class="line-right"></div>
+    </div>
+
+    <!-- 养护文字结束 -->
+
+    <!-- 文章标题开始 -->
+    <div class="content">
+        <div class="list">
+            <?php
+            foreach($res as $key=>$v)
+            { ?>
+            <div class="post-title">
+
+                <a href="new.php?id=<?php echo $v['id']; ?>" >
+<!--                    简约 时尚欧式系列-->
+                    <?php echo $v['type'];?>
+                    <span data-date="2019-11-11 12:03:39" class="time">
+                        <?php echo $v['time'];?>
+                    </span>
+                </a>
+
+            </div>
+            <?php } ?>
+<!--            <div class="post-title">-->
+<!--                <a href=" " title="甜美 公主型系列">-->
+<!--                    甜美 公主型系列-->
+<!--                                <span data-date="2019-11-11 12:03:39" class="time">2019-11-11</span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="post-title">-->
+<!--                <a href=" " title="简约 韩式系列">-->
+<!--                    简约 韩式系列-->
+<!--                              <span data-date="2019-11-11 12:03:39" class="time">2019-11-11</span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="post-title">-->
+<!--                <a href=" " title="秀禾 满庭芳系列">-->
+<!--                    秀禾 满庭芳系列-->
+<!--                              <span data-date="2019-11-11 12:03:39" class="time">2019-11-11</span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="post-last-title">-->
+<!--                <a href=" " title="秀禾 花漾绽放系列">-->
+<!--                    秀禾 花漾绽放系列-->
+<!--                                 <span data-date="2019-11-11 12:03:39" class="time">2019-11-11</span>-->
+<!--                </a>-->
+<!--            </div>-->
+        </div>
+    </div>
+    <!-- 文章标题结束 -->
+
+    <!-- 底部图片开始 -->
+    <div class="lastpic-box">
+        <img src="../static/img/郁金香4.jpg" alt=" " style="height: 320px;width: 100%;">
+    </div>
+    <!-- 底部图片结束 -->
+
+
+    <!--尾栏 -->
+
+<script src="../static/js/xwpublic.js "></script>
+<?php
+require '../view/index/footer.html';
+?>

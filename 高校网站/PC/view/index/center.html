@@ -1,0 +1,111 @@
+
+<?php
+    $cate = [['id'=>0,'cname'=>'全部']];
+$sql = "select * from category order by id asc";
+$cate1 = $mysql->query($sql)->fetch_all(MYSQLI_ASSOC);
+
+$cate = array_merge($cate,$cate1);
+$sql = "select * from goods";
+$all = $mysql->query($sql)->fetch_all(MYSQLI_ASSOC);
+$len = count($cate);
+for($i=0;$i<$len;$i++){
+$items = $cate[$i];
+$id = $items['id'];
+if($i == 0){
+$cate[$i]['goods'] = $all;
+continue;
+}
+$goods = array_filter($all,function($v) use($id){
+return  $v['cid'] == $id;
+});
+$cate[$i]['goods'] = $goods;
+}
+
+
+
+
+?>
+
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/center.css">
+    <link rel="stylesheet" href="../static/css/public1.css">
+    <link rel="stylesheet" href="../static/css/public/public1.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1342887_wewr9nkb7qi.css">
+<style>
+    .list>li{
+        display: inline-block;
+    }
+</style>
+
+<!-- 展示图开始 -->
+    <div class="container">
+        <div class="images" style="margin-bottom: 50px;">
+            <img src="../static/img/郁金香1.jpg" alt="" style="height: 320px;">
+        </div>
+    </div>
+    <!-- 标题-->
+    <div class="container title1">
+        <div class="b-box" >
+            <!-- <div class="row"> -->
+            <div class="title" >
+                <span class="line-left"></span>
+                <div class="word">
+                    <p class="main">
+                        <?php echo $nav['nname'];?>
+                    </p>
+                    <p class="sub">
+                        <?php echo $nav['ename'];?>
+                    </p>
+                </div>
+                <span class="line-right"></span>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- 列表 -->
+    <div class="container list1">
+        <div class="L-box">
+            <ul class="list">
+                <?php  foreach($cate as $key=>$v){?>
+                <li class="items">
+                    <span> <?php echo $v['cname']; ?></span>
+                    <div class="content box-style" style="display: block">
+                        <?php foreach($v['goods'] as $value){?>
+                        <div class="shop">
+                            <div class="shoplist">
+                                <div class="shoppic">
+                                    <div class="shoppicture">
+
+
+                                        <a href="item.php?id=<?php echo $value['id']?>">
+                                            <img src="../static/img/郁金香1.jpg" alt="" alt="" style="width: 200px;height: 200px;">
+
+<!--                                            <img src="<?php echo $value['thumb'];?>" alt="" style="width: 200px;height: 200px;">-->
+
+                                        </a>
+
+
+                                    </div>
+                                </div>
+                                <div class="shopword">
+                                    <a class="word1" href="item.php?id=<?php echo $value['id']?>">
+
+                                        <?php echo $value['gname'];?>
+                                    </a>
+                                </div>
+                                </div>
+                        </div>
+
+                        <?php } ?>
+                    </div>
+                    </li>
+                   <?php } ?>
+             </ul>
+       </div>
+</div>
+<?php
+require '../view/index/footer.html';
+?>
+<script src="../static/js/center.js"></script>
+<script src="../static/js/public.js"></script>

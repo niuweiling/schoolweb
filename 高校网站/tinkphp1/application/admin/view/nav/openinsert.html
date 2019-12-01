@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>添加导航</title>
+	<link rel="stylesheet" href="/tinkphp1/public/static/css/layui.css" media="all">
+	<script src="/tinkphp1/public/static/layui.js" charset="utf-8"></script>
+</head>
+<body>
+<form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+	<div class="layui-form-item">
+		<label class="layui-form-label">导航名称</label>
+		<div class="layui-input-block">
+			<input type="text" lay-verify="nname|require" name="nname" placeholder="请输入" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">英文名称</label>
+		<div class="layui-input-block">
+			<input type="text" lay-verify="ename" name="ename" placeholder="请输入" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">导航排序</label>
+		<div class="layui-input-block">
+			<input type="number" lay-verify="nsort" name="nsort" placeholder="请输入" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">导航模板</label>
+		<div class="layui-input-block">
+			<input type="text" lay-verify="ntpl" name="ntpl" placeholder="请输入" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+
+	<div class="layui-form-item">
+		<div class="layui-input-block">
+			<button class="layui-btn" lay-submit lay-filter="go">立即提交</button>
+			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		</div>
+	</div>
+	<!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+</form>
+<script>
+    layui.use(['element','layer','form'], function() {
+           let layer = layui.layer;
+           let   $ = layui.$;
+           let element = layui.element;
+           let form = layui.form;
+        //表单验证
+        form.verify({
+            nname:[
+                /^[\u4e00-\u9fa5]{1,30}$/,
+                '请输入中文'
+            ]
+            ,ename:[
+                /^[a-zA-Z][a-zA-Z\s]{1,49}$/,
+                '请输入英文'
+            ]
+
+            ,nsort: [
+                /\d{1,6}$/
+                ,'密码必须1到6位，且不能出现空格'
+            ]
+            ,ntpl: [
+                /^[\u4e00-\u9fa5]{1,30}$/,
+                '不能出现非中文'
+            ]
+        })
+
+           //表单提交
+   form.on('submit(go)',function (data) {
+      let qs=data.field;
+      let form=data.form;
+       $.ajax({
+           url:'/tinkphp1/public/admin/nav/insert',
+           type:'POST',
+           data:qs,
+           dataType:'json',
+           success:function (res) {
+               if (res.code == 200){
+                   form.reset();
+                   layer.confirm('添加成功')
+               } else {
+                   console.log("添加失败");
+               }
+           }
+       })
+
+       // upload.render({
+       //     elem: '#uploadDemo'
+       //     ,url: '/tinkphp1/public/admin/nav/insert' //上传接口
+       //     ,done: function(res){
+       //         console.log(res)
+       //     }
+       // });
+
+       return false;
+
+   })
+
+
+})
+
+</script>
+</body>
+</html>

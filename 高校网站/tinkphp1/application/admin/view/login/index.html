@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>登录页面</title>
+	<link rel="stylesheet" href="/tinkphp1/public/static/css/layui.css" media="all">
+	<script src="/tinkphp1/public/static/layui.js" charset="utf-8"></script>
+</head>
+<style>
+	html,body{
+		width: 100%;
+		height: 100%;
+	}
+	body{
+		background-image: url("/tinkphp1/bg.jpg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
+	header{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 80px;
+		/*background: #009E94;*/
+		border-bottom: 1px solid #555555;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	header>form{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+</style>
+</head>
+<body>
+<header>
+	<form class="layui-form" action="">
+		<div class="layui-form-item">
+			<div class="layui-input-block" style="width: 200px">
+				<input type="text" name="title"   lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-inline" style="width: 200px ;margin-left:20px">
+				<input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+
+
+		<div class="layui-form-item" >
+			<div class="layui-input-inline" style="width: 200px ;margin-left:20px;">
+				<img src="{:captcha_src()}" alt="captcha"  style="width: 200px; height: 38px"
+				     onclick="this.src=this.src+`?a=`+Date.now()"
+				/>
+				<input type="text" name="code" style="width: 200px" required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+
+
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<div class="layui-input-inline" style="margin-left:20px; ">
+				<button class="layui-btn" lay-submit lay-filter="go" >提交</button>
+
+			</div>
+		</div>
+	</form>
+</header>
+</body>
+</html>
+<script>
+    const HSOTNAME='/tinkphp1/public/index.php';//定义路径常量
+    layui.use(['element','layer','form','upload','layedit'], function() {
+        //解构赋值
+        let {$, layer, form, upload, element, layedit} = layui;
+        //表单提交
+        form.on('submit(go)', function (data) {
+
+            let qs=data.field;
+            let form=data.form;
+            $.ajax({
+                url:HSOTNAME + `/admin/login/check`,
+                type:'POST',
+                data:qs,
+                dataType:'json',
+                success:function(res) {
+                    if (res.code == 200){
+                        location.replace('/tinkphp1/public/admin/main/index')
+                        layer.confirm('登录成功')
+
+
+                    } else {
+                        console.log("登录失败");
+                    }
+                }
+            })
+
+
+            return false;
+
+        })
+    })
+</script>

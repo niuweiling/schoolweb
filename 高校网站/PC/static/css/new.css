@@ -1,0 +1,252 @@
+* {
+    margin: 0
+}
+
+ul,
+li {
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    list-style: none;
+    color: #f0443a;
+    text-decoration: none;
+}
+
+
+/* 头部图片 */
+
+.pic-box>img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.pic-box {
+    max-width: 1024px;
+    max-height: 320px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+
+/* 养护文字 */
+
+.yanghu-box {
+    position: relative;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.line-left {
+    position: absolute;
+    left: 0;
+    top: 67px;
+    width: 41%;
+    height: 1px;
+    background-color: #d6d6d6;
+}
+
+.line-right {
+    position: absolute;
+    right: 0;
+    top: 67px;
+    width: 41%;
+    height: 1px;
+    background-color: #d6d6d6;
+}
+
+@media screen and (max-width:768px) {
+    .yanghu-text {
+        font-size: 20px !important;
+    }
+    .yanghu-english {
+        font-size: 20px !important;
+    }
+}
+
+.yanghu-text-box {
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+.yanghu-text {
+    font-size: 32px;
+    color: #333333;
+    text-align: center;
+}
+
+.yanghu-english {
+    font-size: 14px;
+    text-align: center;
+    color: #a5a5a5;
+    padding: 2px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+/* 正文段落 开始*/
+
+.texts-box {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: 20px!important;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+.title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 32px;
+    font-weight: normal;
+    font-style: normal;
+    color: #000;
+}
+
+.fabu-date {
+    margin: 0 auto;
+    text-align: center;
+    color: #878787;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.zhengwen-box {
+    margin-top: 10px;
+    word-wrap: break-word;
+    line-height: 25px;
+    color: #3e3e3e;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    text-indent: 2em;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+
+/* 正文段落 结束 */
+
+
+/* 上下篇开始 */
+
+.prenext {
+    max-width: 964px;
+    height: 122px;
+    padding: 40px 15px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.kong {
+    display: inline-block;
+    width: 510px;
+}
+
+.prenext>a:hover {
+    color: #3e3e3e;
+}
+
+.prenext-clone {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .prenext {
+        display: none;
+    }
+    .prenext-clone {
+        display: block;
+        max-width: 738px;
+        padding-right: 50px;
+        padding-left: 50px;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+    .before {
+        max-width: 738px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    .next-box {
+        max-width: 738px;
+        margin: 0 auto;
+    }
+    .before :hover {
+        color: #3e3e3e;
+    }
+    .next-box :hover {
+        color: #3e3e3e;
+    }
+}
+
+
+/* 上下篇结束 */
+
+
+/* 按钮开始 */
+
+.back-btn {
+    max-width: 974px;
+    height: 48px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+button {
+    width: 98px;
+    height: 48px;
+    font-size: 14px;
+    background-color: transparent;
+    border-color: #2a2a2a;
+    line-height: 48px;
+}
+
+button:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+
+/* 按钮结束 */
+
+
+/* 底部图片开始 */
+
+.lastpic-box>img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.lastpic-box {
+    max-width: 1024px;
+    max-height: 320px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+
+/* 底部图片结束 */
